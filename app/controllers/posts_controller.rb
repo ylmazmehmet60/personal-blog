@@ -2,19 +2,30 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy, :kontrol,:like, :unlike]
   before_action :authenticate_user!, only: [:new, :edit, :destroy]
   before_action :kontrol, only:[:edit, :destroy]
+  before_action :checkadmin, only:[:new,:create]
 
   def kontrol
     redirect_to posts_path, notice:"Yetkiniz yok!" unless current_user==@post.user
   end
   
+  def checkadmin
+    @is_admin=User.where(email:'ylmazmehmet60@hotmail.com').first
+      redirect_to posts_path, notice:"Yetkiniz yok!" unless current_user==@is_admin
+  end
+  
+  
   # GET /posts
   # GET /posts.json
   def index
     if params[:category].blank?
-      @posts = Post.all.order("created_at DESC")
+      @posts = Post.all.order("created_at DESC").paginate(page: params[:page], per_page:3)  
+	    @posts2 = Post.all.order("created_at DESC")
+	    @cat= Category.all.order("created_at DESC")
     else
 	    @category_id=Category.find_by(name: params[:category]).id
-      @posts = Post.where(category_id:@category_id).order("created_at DESC")
+      @posts = Post.where(category_id:@category_id).order("created_at DESC").paginate(page: params[:page], per_page:3)  
+	    @posts2 = Post.all.order("created_at DESC")
+	    @cat= Category.all.order("created_at DESC")
     end
     @post=Post.new
   end
@@ -70,7 +81,6 @@ class PostsController < ApplicationController
   # DELETE /posts/1.json
   def destroy
     @post.destroy
-    @post.comments.destroy
     respond_to do |format|
       format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
       format.json { head :no_content }
@@ -101,6 +111,7 @@ class PostsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_post
       @post = Post.find(params[:id])
+      
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

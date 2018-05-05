@@ -92,28 +92,23 @@
                         <p></p>
                 </div>  
           <hr>
+           <% @g1='Genel Yazılar'%>
+          
           <div class="col-md-12">
-            <!-- It can be fixed with bootstrap affix http://getbootstrap.com/javascript/#affix-->
             <div id="sidebar" class="well sidebar-nav">
                 <h5><i class="glyphicon glyphicon-qrcode"></i>
                     <small><b>PROGRAMMING</b></small>
                 </h5>
                 <ul class="nav nav-pills nav-stacked">
-                    <li><a href="#">Java</a></li>
-                    <li><a href="#">PHP</a></li>
+                  <% @cat[1..(@cat.count)-1].each do |cat| %>
+                      <li><a href="posts?category=<%=cat.name%>"><%=cat.name%>(<%=Post.where(category_id: Category.find_by(name: cat.name)).count %>)</a></li>
+                  <%end%> 
                 </ul>
-                <h5><i class="glyphicon glyphicon-sunglasses"></i>
-                    <small><b>DESIGNING</b></small>
+                <h5><i class="glyphicon glyphicon-edit"></i>
+                    <small><b>GENEL</b></small>
                 </h5>
                 <ul class="nav nav-pills nav-stacked">
-                    <li><a href="#">3dsMax</a></li>
-                </ul>
-                    <h5><i class="glyphicon glyphicon-sort-by-order"></i>
-                    <small><b>MATH</b></small>
-                </h5>
-                <ul class="nav nav-pills nav-stacked">
-                    <li><a href="#">Integral</a></li>
-                     <li><a href="#">Derivative</a></li>
+                    <li><a href="/posts?category=Genel+Yazılar"><%=@g1%> (<%=Post.where(category_id: Category.find_by(name:@g1)).count %>)</a></li>
                 </ul>
             </div>
         </div>
@@ -121,10 +116,10 @@
         <hr>
         <div class="homepage_content">
           <hr>
-          		<h2>Tüm Yazılar</h2>
+          		<h2>Yazılar</h2>
                   <hr>
-                   <% @posts.each do |post| %>
-                      <%= link_to post.title, post,class:'date' %><br>
+                   <% @posts2.each do |post| %>
+                      <p><%= link_to post.title, post %></p>
                   <%end%> 
           </div>
           <hr>
@@ -135,12 +130,5 @@
   </div>
 </div>
 
-<% Category.all.each do |category| %>
-         <%=link_to category.name, posts_path(category: category.name)%>
-<%end%>		 
-
-
- 
- 
 <p id="notice"><%= notice %></p>
 <%= render 'shared/footer'%>
