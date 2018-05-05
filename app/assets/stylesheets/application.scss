@@ -1,0 +1,259 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+$dark: #424652;
+$light: #9a9da4;
+$highlight: #8bc6db;
+$border: #E9E9E9;
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Raleway', sans-serif;
+}
+
+.wrapper {
+	width: 90%;
+	margin: 0 auto;
+}
+
+.skinny_wrapper {
+	width: 80%;
+	max-width:760px;
+	margin: 0 auto;
+}
+
+
+#main_navigation {
+	padding: 2.5em 5%;
+	border-bottom: 1px solid $border;
+	.name {
+		font-weight:700;
+		font-size:.85em;
+		letter-spacing: 4px;
+		text-transform: uppercase;
+		border: 2px solid $border;
+		padding: 1rem;
+		text-decoration: none;
+		color: $dark;
+		float: left;
+	}
+	nav {
+		
+		padding-top: 2.2rem;
+		a {
+			color: $dark;
+			text-decoration: none;
+			margin: 0 1rem;
+			font-size: 1.4rem;
+		}
+	}
+}
+
+#main_footer {
+ 
+    width: 100%;
+    display: block;
+	padding: 2.3em 9%;
+	border-top: 1px solid $border;
+	
+	.copyright {
+		float: left;
+		font-size: .9em;
+		margin:0;
+	}
+	nav {
+		float:right;
+		i {
+			color: $dark;
+			margin-left: 1em;
+			padding-top: .2em;
+		}
+	}
+}
+
+.wrapper_padding {
+	padding: 4rem 0;
+}
+
+#post_show_content {
+	header {
+		text-align: center;
+		.date {
+			font-size: .9em;
+			color: $light;
+			margin:0;
+		}
+		h1 {
+			margin: 0;
+		}
+	}
+	hr {
+    	width: 3em;
+    	display: block;
+    	height:2px;
+    	border:0;
+    	border-top:2px solid $highlight;
+    	margin: 2rem 0;
+    	
+    	width:25%;
+ 		margin-left:37%;  
+  		text-align:center;
+  
+    }
+}
+
+
+#share_box {
+	text-align: center;
+	p {
+		padding:0 0 1em 0;
+		margin: 0;
+		font-weight:700;
+		text-transform:uppercase;
+		color: $dark;
+		font-size: .8em;
+	}
+}
+
+
+.well {
+background-color: white !important;
+}
+
+.col-2 {
+	float: left;
+}
+
+.col-2 {
+	width: 27.5%;
+	padding: 0 2.5%;
+}
+
+.homepage_content{
+	text-align:center;
+	h2 {
+		font-size: 1.4rem;
+		text-align:center;
+		font-weight: bold;
+		text-transform:uppercase;
+	}
+	
+	h3 {
+		font-size: 1.4rem;
+		font-weight: bold;
+	}
+	hr {
+    	width: 3em;
+    	display: block;
+    	height:2px;
+    	border:0;
+    	border-top:2px solid $highlight;
+    	margin: 2rem 0;
+    	width:25%;
+ 		margin-left:37%;  
+
+    }
+}
+
+.social-login-btn {
+  margin: 5px;
+  width: 20%;
+  font-size: 250%;
+  padding: 0;
+}
+
+.social-login-more {
+  width: 45%;
+}
+
+.social-google {
+  background-color: #da573b;
+  border-color: #be5238;
+}
+.social-google:hover{
+  background-color: #be5238;
+  border-color: #9b4631;
+}
+
+.social-twitter {
+  background-color: #1daee3;
+  border-color: #3997ba;
+}
+.social-twitter:hover {
+  background-color: #3997ba;
+  border-color: #347b95;
+}
+
+.social-facebook {
+  background-color: #4c699e;
+  border-color: #47618d;
+}
+.social-facebook:hover {
+  background-color: #47618d;
+  border-color: #3c5173;
+}
+
+.social-linkedin {
+  background-color: #4875B4;
+  border-color: #466b99;
+}
+.social-linkedin:hover {
+  background-color: #466b99;
+  border-color: #3b5a7c;
+}
+
+#custom-search-input{
+    padding: 1px;
+    border: solid 1px #E4E4E4;
+    border-radius: 4px;
+    background-color: #fff;
+}
+
+#custom-search-input input{
+    border: 0;
+    box-shadow: none;
+}
+
+#custom-search-input button{
+    margin: 1px 0 0 0;
+    background: none;
+    box-shadow: none;
+    border: 0;
+    color: #666666;
+    padding: 0 8px 0 10px;
+    border-left: solid 1px #ccc;
+}
+
+#custom-search-input button:hover{
+    border: 0;
+    box-shadow: none;
+    border-left: solid 1px #ccc;
+}
+
+#custom-search-input .glyphicon-search{
+    font-size: 15px;
+}
+
+#img-logom{
+    height:290px;
+    width:290px;
+  }
+
+@import "bootstrap-sprockets";
+@import "bootstrap"

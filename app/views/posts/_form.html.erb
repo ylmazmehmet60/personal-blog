@@ -1,0 +1,53 @@
+
+
+<%= form_for(@post) do |f| %>
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% @post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+<% end %>
+
+<div class="container">
+  <div class="row">
+    <div class="skinny_wrapper wrapper_padding">
+      <h1 id="page_title">İçerik Yükle!</h1>
+      <h3 id="page_title">yazılarınız değerlendirmeye alındıktan sonra yayımlanır.</h3><hr>
+      
+          <div class="form-group">
+             <label>Katogori Seç</label><br>
+             <%= f.collection_select :category_id, Category.all, :id, :name, {promt: "Katogori Seç"}	%>
+          </div>
+      
+      
+      
+          <div class="form-group">
+              <label>Başlık</label><br>
+             <%= f.text_field :title,class:"form-control",id:"exampleFormControlInput1",placeholder:"başlık gir"%>
+          </div>
+          
+          <div class="form-group">
+              <label>İçerik</label><br>
+             <%= f.text_area :msg,class:"form-control",id:"exampleFormControlTextarea1",placeholder:"içerik gir" ,rows:"9"%>
+          </div>
+          
+          <div class="form-group">
+              <label>İçerik Resmi</label><br>
+             <%= f.file_field :image,class:"form-control",id:"exampleFormControlTextarea1",placeholder:"post resmi yükle"%>
+          </div>
+          
+          <div class="actions">
+            <%= f.submit 'POSTLA', class: "btn btn-block btn-default btn-md" %>
+          </div>
+          
+      <%= link_to 'Geri', posts_path %><br>
+    </div>
+  </div>
+</div>    
+<% end %>
+

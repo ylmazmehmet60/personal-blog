@@ -1,0 +1,63 @@
+<div class="container"><br>
+   <div class="well">
+     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= devise_error_messages! %>
+    <div class="container">
+  <div class="row">
+    <div class="skinny_wrapper wrapper_padding">
+      <h1 id="page_title">Profilini düzenle <%= current_user.name.to_s.humanize %> :D</h1><hr>
+      
+          <div class="form-group">
+              <label>isim</label><br>
+              <%= f.text_field :name,class:"form-control",id:"exampleFormControlInput1",placeholder:"isim gir",autofocus: true, autocomplete: "on" %>
+          </div>
+          
+          <div class="form-group">
+              <label>email</label><br>
+              <%= f.email_field :email,class:"form-control",id:"exampleFormControlInput1",placeholder:"email gir",autofocus: true, autocomplete: "on" %>
+          </div>
+          
+          <div class="form-group">
+              <label>parola gir</label><br>
+              <%= f.password_field :password,class:"form-control",id:"exampleFormControlInput1",placeholder:"yeni parola gir",autofocus: true, autocomplete: "on" %>
+              <% if @minimum_password_length %>
+                <br />
+              <% end %>
+          </div>
+          
+           <div class="form-group">
+              <label>yeni parola tekrar gir </label><br>
+              <%= f.password_field :password_confirmation,class:"form-control",id:"exampleFormControlInput1",placeholder:"yeni parola tekrar gir",autofocus: true, autocomplete: "off" %>
+          </div>
+          
+          
+          <div class="form-group">
+              <label>mevcut parola</label><br>
+              <%= f.password_field :current_password,class:"form-control",id:"exampleFormControlInput1",placeholder:"mevcut parola",autofocus: true, autocomplete: "off" %>
+          </div>
+
+          
+          <div class="form-group">
+              <label>İçerik Resmi</label><br>
+             <%= f.file_field :image,class:"form-control",id:"exampleFormControlTextarea1",placeholder:"post resmi yükle"%>
+          </div>
+          
+          <div class="actions">
+            <%= f.submit 'YOLLA', class: "btn btn-block btn-default btn-md" %>
+          </div>
+       
+       <% end %>
+       <h3>Hesabı sil !</h3>
+
+      <p>Mutsuzmusun? <%= button_to "sonsuza kadar sil", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>   
+      <%= link_to 'Geri', posts_path %><br>
+    </div>
+  </div>
+</div> 
+    </div>      
+</div> 
+
+
+
+
+<%= render 'shared/footer'%>

@@ -1,0 +1,50 @@
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+<div class="container">
+  <div class="row">
+    <div class="skinny_wrapper wrapper_padding">
+      <h1 id="page_title">Üye Kaydı !</h1><hr>
+          <div class="form-group">
+             <%= f.label :isim %><br /><br>
+             <%= f.text_field :name,class:"form-control",autofocus: true, autocomplete: "name" %>
+          </div>
+          
+          
+          <div class="form-group">
+              <%= f.label :email %><br />
+             <%= f.email_field :email,class:"form-control", autofocus: true, autocomplete: "email" %>
+          </div>
+          
+          <div class="form-group">
+              <%= f.label :parola %>
+              <% if @minimum_password_length %>
+                <em>(<%= @minimum_password_length %> en az karakter olmalı)</em>
+              <% end %><br />
+             <%= f.password_field :password,class:"form-control",autocomplete: "off" %>
+          </div>
+
+
+          <div class="form-group">
+              <%= f.label :parolatekrar %>
+             <%= f.password_field :password_confirmation,class:"form-control",autocomplete: "off" %>
+          </div>
+
+          
+          <div class="form-group">
+              <label>İçerik Resmi</label><br>
+             <%= f.file_field :image,class:"form-control",placeholder:"profil resmi yükle"%>
+          </div>
+          
+          <div class="actions">
+            <%= f.submit 'KAYDOL', class: "btn btn-block btn-default btn-md" %>
+          </div>
+          
+      <%= link_to 'Geri', posts_path %><br>
+    </div>
+  </div>
+</div>    
+<% end %>
+
+
+
+<%= render 'shared/footer'%>

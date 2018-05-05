@@ -1,0 +1,23 @@
+<header id="main_navigation" class="clearfix">
+	<a href="/posts" class="name">THEYILMAZ'S </a>
+	<nav>
+    	&emsp;&emsp;&emsp;
+    	<%= link_to 'Yayınlar',root_path%>
+    	<%= link_to 'İçerik Yükle',new_post_path %>
+    	<%= link_to 'Hakkımda',aboutme_index_path %>
+		<a href="/aboutme/contact">İletişim</a>
+		
+		<ul class="nav navbar-right">
+            <% if user_signed_in? %>
+            <em><%=image_tag current_user.image.url(:mini) ,:class=>'img-circle' %> </em>
+            Hoşgeldin <%= current_user.name %>&emsp;
+            <%= link_to 'Hesabım', edit_user_registration_path, :class=>'glyphicon glyphicon-user'%> |
+            <%= link_to 'Çıkış Yap', destroy_user_session_path, method: :delete, :class=>'glyphicon glyphicon-log-out'%>
+            <% else %>
+            <%= link_to ' Üye Ol', new_user_registration_path, :class=>'glyphicon glyphicon-user' %> 
+            <%= link_to ' Oturum Aç', new_user_session_path, :class=>'glyphicon glyphicon-log-in'%></a>
+            <%end%>
+        </ul>    
+	</nav>
+</header>
+

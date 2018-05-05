@@ -1,0 +1,146 @@
+<div class="container"><br>
+  <div class="jumbotron">
+    <h1 class="display-3">Blog sayfama hoşgeldiniz</h1>
+    <p class="lead">Dünyada paylaştığın her şeyde sana düşen pay azalır. Paylaştıkça çoğalan yegane şey bilgidir. 
+      Bu vesile ile okurlara selam ederim.</p>
+    <hr class="my-4">
+    <p>Bu sitenin kaynak kodlarına GitHub sayfamdan ulaşabilirsiniz... </p>
+    <p class="lead">
+      <a class="btn btn-primary btn-lg" href="#" role="button">Ziyaret Et</a>
+    </p>
+  </div>
+  <div class="row">
+    <div class="col-md-8">
+       <div class="well">
+         
+         
+        <% @posts.each do |post| %>
+        <div id="post_show_content" class="skinny_wrapper wrapper_padding">
+        	<header>
+        		<p class="date"><%=post.created_at%></p>
+        		<h1><%=post.title%></h1>
+        		<p class="date"><%=post.user.name%> tarafından yayınlandı</p>
+        		<p><%=post.category.name%> bölüne ait</p>
+        		<hr >
+        	</header>
+       
+        <h5>
+            <span class="glyphicon glyphicon-thumbs-up"></span> (<%=post.likes.count%>) beğeni&nbsp;  
+            <% if post.comments.count>0 %>
+                      <span class="glyphicon glyphicon-comment"></span>
+                     (<%= post.comments.count%>) yorum 
+             <%end%>    
+        </h5>
+                         
+        	<div id="content">
+        	<%=image_tag post.image.url(:medium),class:"img img-responsive" if post.image?%>  
+        	<p><%=post.msg%></p>
+        	<div class="show-more">
+             <%=link_to 'Devamını Oku',post%>
+           </div>
+           
+        <div class="action">
+            <div id="<%=post.id%>">
+                    <%if Like.where(user:current_user, post:post).count>0%>
+                        <%= link_to "", unlike_post_path(post), class:"glyphicon glyphicon-heart",remote: :true, method: :put %>
+                       
+                    <%else%>
+                        <%= link_to "", like_post_path(post), class:"glyphicon glyphicon-heart-empty",remote: :true, method: :put %>
+                       
+                    <%end%>
+            </div>
+        </div>
+        
+           <br>
+            <%= link_to 'Yorumları Göster ', post ,class:'fa fa-eye'%>
+        </div>
+        <div id="share_box">
+        	<p>Paylaş</p>
+        	<a href="#"><i class="fa fa-facebook"></i></a>
+        	<a href="#"><i class="fa fa-twitter"></i></a>
+        	<a href="#"><i class="fa fa-google-plus"></i></a>
+        </div>
+        </div>
+      <hr>
+      <%end%>  
+      </div>
+    </div>
+	  <div class="col-md-4">
+	    <div class="well">
+	        <div id="custom-search-input">
+                <div class="input-group col-md-12">
+                    <input type="text" class="form-control input-lg" placeholder="arayın..." />
+                    <span class="input-group-btn">
+                        <button class="btn btn-info btn-lg" type="button">
+                            <i class="glyphicon glyphicon-search"></i>
+                        </button>
+                    </span>
+                </div>
+            </div>
+           <hr> 
+          <p>
+            &nbsp;<a class="btn btn-primary social-login-btn social-facebook" href="https://www.facebook.com/mmt3d"><i class="fa fa-facebook"></i></a>
+            <a class="btn btn-primary social-login-btn social-twitter" href="https://twitter.com/mmt3d"><i class="fa fa-twitter"></i></a>
+            <a class="btn btn-primary social-login-btn social-linkedin" href="https://tr.linkedin.com/mmt3d"><i class="fa fa-linkedin"></i></a>
+            <a class="btn btn-primary social-login-btn social-google" href="https://plus.google.com/u/0/+MehmetY%C4%B1lmazxd"><i class="fa fa-google-plus"></i></a>
+          </p>
+          <hr>
+              	<div class="col-md-12">
+                        <img src="https://scontent-frx5-1.xx.fbcdn.net/v/t1.0-9/19875616_10155523411333624_2247074439320969601_n.jpg?oh=09100e8aaa00eab7c93a574e4d7c950b&oe=5AF2C49A" id="img-logom" class="img-circle" alt="aboutme">
+                        <p></p>
+                        <p align="center">Mehmet Yılmaz | Fırat Üniversitesi</p>
+                        <p></p>
+                </div>  
+          <hr>
+          <div class="col-md-12">
+            <!-- It can be fixed with bootstrap affix http://getbootstrap.com/javascript/#affix-->
+            <div id="sidebar" class="well sidebar-nav">
+                <h5><i class="glyphicon glyphicon-qrcode"></i>
+                    <small><b>PROGRAMMING</b></small>
+                </h5>
+                <ul class="nav nav-pills nav-stacked">
+                    <li><a href="#">Java</a></li>
+                    <li><a href="#">PHP</a></li>
+                </ul>
+                <h5><i class="glyphicon glyphicon-sunglasses"></i>
+                    <small><b>DESIGNING</b></small>
+                </h5>
+                <ul class="nav nav-pills nav-stacked">
+                    <li><a href="#">3dsMax</a></li>
+                </ul>
+                    <h5><i class="glyphicon glyphicon-sort-by-order"></i>
+                    <small><b>MATH</b></small>
+                </h5>
+                <ul class="nav nav-pills nav-stacked">
+                    <li><a href="#">Integral</a></li>
+                     <li><a href="#">Derivative</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <hr>
+        <div class="homepage_content">
+          <hr>
+          		<h2>Tüm Yazılar</h2>
+                  <hr>
+                   <% @posts.each do |post| %>
+                      <%= link_to post.title, post,class:'date' %><br>
+                  <%end%> 
+          </div>
+          <hr>
+        
+	    </div>  
+	  </div>
+	  
+  </div>
+</div>
+
+<% Category.all.each do |category| %>
+         <%=link_to category.name, posts_path(category: category.name)%>
+<%end%>		 
+
+
+ 
+ 
+<p id="notice"><%= notice %></p>
+<%= render 'shared/footer'%>
