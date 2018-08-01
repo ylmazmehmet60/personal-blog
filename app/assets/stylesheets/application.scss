@@ -254,6 +254,11 @@ background-color: white !important;
     height:190px;
     width:190px;
   }
+  
+img[alt="redcarpetpic"] { 
+  max-width:  568px; 
+  display: block;
+}  
 
 @import "bootstrap-sprockets";
 @import "bootstrap"
