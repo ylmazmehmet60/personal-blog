@@ -9,7 +9,7 @@ class PostsController < ApplicationController
   end
   
   def checkadmin
-    @is_admin=User.where(email:'ylmazmehmet60@hotmail.com').first
+    @is_admin=User.where(email:'ylmazmehmet60@gmail.com').first
       redirect_to posts_path, notice:"Yetkiniz yok!" unless current_user==@is_admin
   end
   
