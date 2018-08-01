@@ -17,7 +17,7 @@
         	</header>
         	<div id="content">
         	<%=image_tag @post.image.url(:medium),class:"img img-responsive" if @post.image?%>  
-        	<p><%=@post.msg%></p>
+        	<p><%= markdown @post.msg%></p>
            <br>
            <% if current_user==@post.user%>
               <%= link_to 'Düzenle ', edit_post_path(@post) ,class:'fa fa-pencil'%>

@@ -17,7 +17,7 @@
         <% @posts.each do |post| %>
         <div id="post_show_content" class="skinny_wrapper wrapper_padding">
         	<header>
-        		<p class="date"><%=post.created_at%></p>
+        		<p class="date"><%=time_ago_in_words(post.created_at)%> ago</p>
         		<h1><%=post.title%></h1>
         		<p class="date"><%=post.user.name%> tarafından yayınlandı</p>
         		<p><%=post.category.name%> bölüne ait</p>
@@ -34,7 +34,7 @@
                          
         	<div id="content">
         	<%=image_tag post.image.url(:medium),class:"img img-responsive" if post.image?%>  
-        	<p><%=post.msg%></p>
+        	<p><%= markdown post.msg%></p>
         	<div class="show-more">
              <%=link_to 'Devamını Oku',post%>
            </div>
