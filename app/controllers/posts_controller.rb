@@ -18,7 +18,7 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     if params[:category].blank?
-      @posts = Post.all.order("created_at DESC").paginate(page: params[:page], per_page:3)  
+      @posts = Post.all.order("created_at DESC").paginate(page: params[:page], per_page:3) 
 	    @posts2 = Post.all.order("created_at DESC")
 	    @cat= Category.all.order("created_at DESC")
     else
