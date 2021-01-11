@@ -28,7 +28,7 @@ gem 'devise'
 gem 'paperclip'
 gem 'will_paginate', '~> 3.1', '>= 3.1.6'
 gem 'will_paginate-bootstrap4'
-gem 'redcarpet', '~> 3.4'
+gem 'redcarpet', '~> 3.5'
 gem 'pygments.rb', '~> 1.2', '>= 1.2.1'
 
 
