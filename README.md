@@ -1,5 +1,6 @@
 
-=SUM(1/COUNTIF(FILTERXML("<t><s>" & SUBSTITUTE(A2, ";", "</s><s>") & "</s></t>", "//s"), FILTERXML("<t><s>" & SUBSTITUTE(A2, ";", "</s><s>") & "</s></t>", "//s")))
+=SUM(1/COUNTIF(A2:A100, "*" & TRIM(MID(SUBSTITUTE(A2:A100, ";", REPT(" ", LEN(A2:A100))), (ROW(A2:A100)-ROW(A2)+1)*LEN(A2:A100), LEN(A2:A100)))&"*"))
+
 
 == HEROKU 
 
